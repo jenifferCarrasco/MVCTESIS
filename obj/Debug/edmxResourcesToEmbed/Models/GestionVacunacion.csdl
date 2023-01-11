@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_VACUNACIONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Canino">
+    <Key>
+      <PropertyRef Name="IdCanino" />
+    </Key>
+    <Property Name="IdCanino" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Raza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+    <Property Name="Peso" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PropietarioCanino" Relationship="Self.FK__Canino__IdPropie__5070F446" FromRole="Canino" ToRole="PropietarioCanino" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdCanino__628FA481" FromRole="Canino" ToRole="Citas" />
+    <NavigationProperty Name="CitaVacunacion" Relationship="Self.FK__CitaVacun__IdCan__6B24EA82" FromRole="Canino" ToRole="CitaVacunacion" />
+    <NavigationProperty Name="Vacunaciones" Relationship="Self.FK__Vacunacio__IdCan__571DF1D5" FromRole="Canino" ToRole="Vacunaciones" />
+  </EntityType>
+  <EntityType Name="Centros">
+    <Key>
+      <PropertyRef Name="IdCentro" />
+    </Key>
+    <Property Name="IdCentro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdCentro__619B8048" FromRole="Centros" ToRole="Citas" />
+    <NavigationProperty Name="CitaVacunacion" Relationship="Self.FK__CitaVacun__IdCen__6A30C649" FromRole="Centros" ToRole="CitaVacunacion" />
+    <NavigationProperty Name="Vacunaciones" Relationship="Self.FK__Vacunacio__IdCen__5535A963" FromRole="Centros" ToRole="Vacunaciones" />
+  </EntityType>
+  <EntityType Name="Citas">
+    <Key>
+      <PropertyRef Name="IdCita" />
+    </Key>
+    <Property Name="IdCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdVacunador" Type="Int32" Nullable="false" />
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+    <Property Name="IdCentro" Type="Int32" Nullable="false" />
+    <Property Name="IdCanino" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Hota" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Canino" Relationship="Self.FK__Citas__IdCanino__628FA481" FromRole="Citas" ToRole="Canino" />
+    <NavigationProperty Name="Centros" Relationship="Self.FK__Citas__IdCentro__619B8048" FromRole="Citas" ToRole="Centros" />
+    <NavigationProperty Name="EstadoCitas" Relationship="Self.FK__Citas__IdEstado__6383C8BA" FromRole="Citas" ToRole="EstadoCitas" />
+    <NavigationProperty Name="PropietarioCanino" Relationship="Self.FK__Citas__IdPropiet__60A75C0F" FromRole="Citas" ToRole="PropietarioCanino" />
+    <NavigationProperty Name="Vacunadores" Relationship="Self.FK__Citas__IdVacunad__5FB337D6" FromRole="Citas" ToRole="Vacunadores" />
+  </EntityType>
+  <EntityType Name="CitaVacunacion">
+    <Key>
+      <PropertyRef Name="IdCita" />
+    </Key>
+    <Property Name="IdCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdVacunador" Type="Int32" Nullable="false" />
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+    <Property Name="IdCentro" Type="Int32" Nullable="false" />
+    <Property Name="IdCanino" Type="Int32" Nullable="false" />
+    <Property Name="EstadoCita" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Observacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaAtencion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaAtencionI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaAtencionF" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraI" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="HoraF" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Canino" Relationship="Self.FK__CitaVacun__IdCan__6B24EA82" FromRole="CitaVacunacion" ToRole="Canino" />
+    <NavigationProperty Name="Centros" Relationship="Self.FK__CitaVacun__IdCen__6A30C649" FromRole="CitaVacunacion" ToRole="Centros" />
+    <NavigationProperty Name="PropietarioCanino" Relationship="Self.FK__CitaVacun__IdPro__693CA210" FromRole="CitaVacunacion" ToRole="PropietarioCanino" />
+    <NavigationProperty Name="Vacunadores" Relationship="Self.FK__CitaVacun__IdVac__68487DD7" FromRole="CitaVacunacion" ToRole="Vacunadores" />
+  </EntityType>
+  <EntityType Name="EstadoCitas">
+    <Key>
+      <PropertyRef Name="IdEstadoCita" />
+    </Key>
+    <Property Name="IdEstadoCita" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdEstado__6383C8BA" FromRole="EstadoCitas" ToRole="Citas" />
+  </EntityType>
+  <EntityType Name="Horario">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+    </Key>
+    <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdVacunador" Type="Int32" Nullable="false" />
+    <Property Name="FechaAtencion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraI" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="HoraF" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Vacunadores" Relationship="Self.FK__Horario__IdVacun__6FE99F9F" FromRole="Horario" ToRole="Vacunadores" />
+  </EntityType>
+  <EntityType Name="PropietarioCanino">
+    <Key>
+      <PropertyRef Name="IdPropietario" />
+    </Key>
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Canino" Relationship="Self.FK__Canino__IdPropie__5070F446" FromRole="PropietarioCanino" ToRole="Canino" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdPropiet__60A75C0F" FromRole="PropietarioCanino" ToRole="Citas" />
+    <NavigationProperty Name="CitaVacunacion" Relationship="Self.FK__CitaVacun__IdPro__693CA210" FromRole="PropietarioCanino" ToRole="CitaVacunacion" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Propietar__IdRol__46E78A0C" FromRole="PropietarioCanino" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PropietarioCanino" Relationship="Self.FK__Propietar__IdRol__46E78A0C" FromRole="Roles" ToRole="PropietarioCanino" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdRol__4BAC3F29" FromRole="Roles" ToRole="Usuario" />
+    <NavigationProperty Name="Vacunadores" Relationship="Self.FK__Vacunador__IdRol__4222D4EF" FromRole="Roles" ToRole="Vacunadores" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Usuario__IdRol__4BAC3F29" FromRole="Usuario" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Vacunaciones">
+    <Key>
+      <PropertyRef Name="IdVacunacion" />
+    </Key>
+    <Property Name="IdVacunacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCentro" Type="Int32" Nullable="false" />
+    <Property Name="IdVacuna" Type="Int32" Nullable="false" />
+    <Property Name="IdCanino" Type="Int32" Nullable="false" />
+    <Property Name="IdVacunador" Type="Int32" Nullable="false" />
+    <Property Name="Dosis" Type="Int32" Nullable="false" />
+    <Property Name="FechaProxima" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Canino" Relationship="Self.FK__Vacunacio__IdCan__571DF1D5" FromRole="Vacunaciones" ToRole="Canino" />
+    <NavigationProperty Name="Centros" Relationship="Self.FK__Vacunacio__IdCen__5535A963" FromRole="Vacunaciones" ToRole="Centros" />
+    <NavigationProperty Name="Vacunas" Relationship="Self.FK__Vacunacio__IdVac__5629CD9C" FromRole="Vacunaciones" ToRole="Vacunas" />
+    <NavigationProperty Name="Vacunadores" Relationship="Self.FK__Vacunacio__IdVac__5812160E" FromRole="Vacunaciones" ToRole="Vacunadores" />
+  </EntityType>
+  <EntityType Name="Vacunadores">
+    <Key>
+      <PropertyRef Name="IdVacunador" />
+    </Key>
+    <Property Name="IdVacunador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdVacunad__5FB337D6" FromRole="Vacunadores" ToRole="Citas" />
+    <NavigationProperty Name="CitaVacunacion" Relationship="Self.FK__CitaVacun__IdVac__68487DD7" FromRole="Vacunadores" ToRole="CitaVacunacion" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__IdVacun__6FE99F9F" FromRole="Vacunadores" ToRole="Horario" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Vacunador__IdRol__4222D4EF" FromRole="Vacunadores" ToRole="Roles" />
+    <NavigationProperty Name="Vacunaciones" Relationship="Self.FK__Vacunacio__IdVac__5812160E" FromRole="Vacunadores" ToRole="Vacunaciones" />
+  </EntityType>
+  <EntityType Name="Vacunas">
+    <Key>
+      <PropertyRef Name="IdVacuna" />
+    </Key>
+    <Property Name="IdVacuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Laboratorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaCaducidad" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Vacunaciones" Relationship="Self.FK__Vacunacio__IdVac__5629CD9C" FromRole="Vacunas" ToRole="Vacunaciones" />
+  </EntityType>
+  <Association Name="FK__Canino__IdPropie__5070F446">
+    <End Role="PropietarioCanino" Type="Self.PropietarioCanino" Multiplicity="1" />
+    <End Role="Canino" Type="Self.Canino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropietarioCanino">
+        <PropertyRef Name="IdPropietario" />
+      </Principal>
+      <Dependent Role="Canino">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__IdCanino__628FA481">
+    <End Role="Canino" Type="Self.Canino" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canino">
+        <PropertyRef Name="IdCanino" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="IdCanino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CitaVacun__IdCan__6B24EA82">
+    <End Role="Canino" Type="Self.Canino" Multiplicity="1" />
+    <End Role="CitaVacunacion" Type="Self.CitaVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canino">
+        <PropertyRef Name="IdCanino" />
+      </Principal>
+      <Dependent Role="CitaVacunacion">
+        <PropertyRef Name="IdCanino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacunacio__IdCan__571DF1D5">
+    <End Role="Canino" Type="Self.Canino" Multiplicity="1" />
+    <End Role="Vacunaciones" Type="Self.Vacunaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canino">
+        <PropertyRef Name="IdCanino" />
+      </Principal>
+      <Dependent Role="Vacunaciones">
+        <PropertyRef Name="IdCanino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__IdCentro__619B8048">
+    <End Role="Centros" Type="Self.Centros" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centros">
+        <PropertyRef Name="IdCentro" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="IdCentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CitaVacun__IdCen__6A30C649">
+    <End Role="Centros" Type="Self.Centros" Multiplicity="1" />
+    <End Role="CitaVacunacion" Type="Self.CitaVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centros">
+        <PropertyRef Name="IdCentro" />
+      </Principal>
+      <Dependent Role="CitaVacunacion">
+        <PropertyRef Name="IdCentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacunacio__IdCen__5535A963">
+    <End Role="Centros" Type="Self.Centros" Multiplicity="1" />
+    <End Role="Vacunaciones" Type="Self.Vacunaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centros">
+        <PropertyRef Name="IdCentro" />
+      </Principal>
+      <Dependent Role="Vacunaciones">
+        <PropertyRef Name="IdCentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__IdEstado__6383C8BA">
+    <End Role="EstadoCitas" Type="Self.EstadoCitas" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoCitas">
+        <PropertyRef Name="IdEstadoCita" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__IdPropiet__60A75C0F">
+    <End Role="PropietarioCanino" Type="Self.PropietarioCanino" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropietarioCanino">
+        <PropertyRef Name="IdPropietario" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__IdVacunad__5FB337D6">
+    <End Role="Vacunadores" Type="Self.Vacunadores" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunadores">
+        <PropertyRef Name="IdVacunador" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="IdVacunador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CitaVacun__IdPro__693CA210">
+    <End Role="PropietarioCanino" Type="Self.PropietarioCanino" Multiplicity="1" />
+    <End Role="CitaVacunacion" Type="Self.CitaVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropietarioCanino">
+        <PropertyRef Name="IdPropietario" />
+      </Principal>
+      <Dependent Role="CitaVacunacion">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CitaVacun__IdVac__68487DD7">
+    <End Role="Vacunadores" Type="Self.Vacunadores" Multiplicity="1" />
+    <End Role="CitaVacunacion" Type="Self.CitaVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunadores">
+        <PropertyRef Name="IdVacunador" />
+      </Principal>
+      <Dependent Role="CitaVacunacion">
+        <PropertyRef Name="IdVacunador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Horario__IdVacun__6FE99F9F">
+    <End Role="Vacunadores" Type="Self.Vacunadores" Multiplicity="1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunadores">
+        <PropertyRef Name="IdVacunador" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="IdVacunador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Propietar__IdRol__46E78A0C">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="PropietarioCanino" Type="Self.PropietarioCanino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="PropietarioCanino">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdRol__4BAC3F29">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacunador__IdRol__4222D4EF">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Vacunadores" Type="Self.Vacunadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Vacunadores">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacunacio__IdVac__5629CD9C">
+    <End Role="Vacunas" Type="Self.Vacunas" Multiplicity="1" />
+    <End Role="Vacunaciones" Type="Self.Vacunaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunas">
+        <PropertyRef Name="IdVacuna" />
+      </Principal>
+      <Dependent Role="Vacunaciones">
+        <PropertyRef Name="IdVacuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacunacio__IdVac__5812160E">
+    <End Role="Vacunadores" Type="Self.Vacunadores" Multiplicity="1" />
+    <End Role="Vacunaciones" Type="Self.Vacunaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunadores">
+        <PropertyRef Name="IdVacunador" />
+      </Principal>
+      <Dependent Role="Vacunaciones">
+        <PropertyRef Name="IdVacunador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_VACUNACIONEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Canino" EntityType="Self.Canino" />
+    <EntitySet Name="Centros" EntityType="Self.Centros" />
+    <EntitySet Name="Citas" EntityType="Self.Citas" />
+    <EntitySet Name="CitaVacunacion" EntityType="Self.CitaVacunacion" />
+    <EntitySet Name="EstadoCitas" EntityType="Self.EstadoCitas" />
+    <EntitySet Name="Horario" EntityType="Self.Horario" />
+    <EntitySet Name="PropietarioCanino" EntityType="Self.PropietarioCanino" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Vacunaciones" EntityType="Self.Vacunaciones" />
+    <EntitySet Name="Vacunadores" EntityType="Self.Vacunadores" />
+    <EntitySet Name="Vacunas" EntityType="Self.Vacunas" />
+    <AssociationSet Name="FK__Canino__IdPropie__5070F446" Association="Self.FK__Canino__IdPropie__5070F446">
+      <End Role="PropietarioCanino" EntitySet="PropietarioCanino" />
+      <End Role="Canino" EntitySet="Canino" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__IdCanino__628FA481" Association="Self.FK__Citas__IdCanino__628FA481">
+      <End Role="Canino" EntitySet="Canino" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CitaVacun__IdCan__6B24EA82" Association="Self.FK__CitaVacun__IdCan__6B24EA82">
+      <End Role="Canino" EntitySet="Canino" />
+      <End Role="CitaVacunacion" EntitySet="CitaVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacunacio__IdCan__571DF1D5" Association="Self.FK__Vacunacio__IdCan__571DF1D5">
+      <End Role="Canino" EntitySet="Canino" />
+      <End Role="Vacunaciones" EntitySet="Vacunaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__IdCentro__619B8048" Association="Self.FK__Citas__IdCentro__619B8048">
+      <End Role="Centros" EntitySet="Centros" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CitaVacun__IdCen__6A30C649" Association="Self.FK__CitaVacun__IdCen__6A30C649">
+      <End Role="Centros" EntitySet="Centros" />
+      <End Role="CitaVacunacion" EntitySet="CitaVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacunacio__IdCen__5535A963" Association="Self.FK__Vacunacio__IdCen__5535A963">
+      <End Role="Centros" EntitySet="Centros" />
+      <End Role="Vacunaciones" EntitySet="Vacunaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__IdEstado__6383C8BA" Association="Self.FK__Citas__IdEstado__6383C8BA">
+      <End Role="EstadoCitas" EntitySet="EstadoCitas" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__IdPropiet__60A75C0F" Association="Self.FK__Citas__IdPropiet__60A75C0F">
+      <End Role="PropietarioCanino" EntitySet="PropietarioCanino" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__IdVacunad__5FB337D6" Association="Self.FK__Citas__IdVacunad__5FB337D6">
+      <End Role="Vacunadores" EntitySet="Vacunadores" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CitaVacun__IdPro__693CA210" Association="Self.FK__CitaVacun__IdPro__693CA210">
+      <End Role="PropietarioCanino" EntitySet="PropietarioCanino" />
+      <End Role="CitaVacunacion" EntitySet="CitaVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CitaVacun__IdVac__68487DD7" Association="Self.FK__CitaVacun__IdVac__68487DD7">
+      <End Role="Vacunadores" EntitySet="Vacunadores" />
+      <End Role="CitaVacunacion" EntitySet="CitaVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Horario__IdVacun__6FE99F9F" Association="Self.FK__Horario__IdVacun__6FE99F9F">
+      <End Role="Vacunadores" EntitySet="Vacunadores" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Propietar__IdRol__46E78A0C" Association="Self.FK__Propietar__IdRol__46E78A0C">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="PropietarioCanino" EntitySet="PropietarioCanino" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdRol__4BAC3F29" Association="Self.FK__Usuario__IdRol__4BAC3F29">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacunador__IdRol__4222D4EF" Association="Self.FK__Vacunador__IdRol__4222D4EF">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Vacunadores" EntitySet="Vacunadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacunacio__IdVac__5629CD9C" Association="Self.FK__Vacunacio__IdVac__5629CD9C">
+      <End Role="Vacunas" EntitySet="Vacunas" />
+      <End Role="Vacunaciones" EntitySet="Vacunaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacunacio__IdVac__5812160E" Association="Self.FK__Vacunacio__IdVac__5812160E">
+      <End Role="Vacunadores" EntitySet="Vacunadores" />
+      <End Role="Vacunaciones" EntitySet="Vacunaciones" />
+    </AssociationSet>
+    <FunctionImport Name="GC_BUSCAR_HORARIO" ReturnType="Collection(DB_VACUNACIONModel.GC_BUSCAR_HORARIO_Result)">
+      <Parameter Name="TIPOBUSQUEDA" Mode="In" Type="String" />
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="FILTRO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GC_EDITAR_CITA_SP">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="VacunadorID" Mode="In" Type="Int32" />
+      <Parameter Name="CaninoID" Mode="In" Type="Int32" />
+      <Parameter Name="PropietarioID" Mode="In" Type="Int32" />
+      <Parameter Name="CentroID" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="INICIOATENCION" Mode="In" Type="Time" />
+      <Parameter Name="FINATENCION" Mode="In" Type="Time" />
+      <Parameter Name="ESTADOcita" Mode="In" Type="String" />
+      <Parameter Name="OBSERVACIONES" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GC_EDITAR_HORARIO_SP">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="VacunadorID" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="INICIOATENCION" Mode="In" Type="Time" />
+      <Parameter Name="FINATENCION" Mode="In" Type="Time" />
+      <Parameter Name="ACTIVO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GC_INSERTAR_CITA_SP" ReturnType="Collection(Int32)">
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="IdPropietario" Mode="In" Type="Int32" />
+      <Parameter Name="IdCentro" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="INICIOATENCION" Mode="In" Type="Time" />
+      <Parameter Name="FINATENCION" Mode="In" Type="Time" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GC_INSERTAR_HORARIO_SP" ReturnType="Collection(Int32)">
+      <Parameter Name="VacunadorID" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="INICIOATENCION" Mode="In" Type="Time" />
+      <Parameter Name="FINATENCION" Mode="In" Type="Time" />
+      <Parameter Name="USUARIOREGISTRO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GC_LEER_CITA_SP" ReturnType="Collection(DB_VACUNACIONModel.GC_LEER_CITA_SP_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GC_LEER_CITAS_MEDICO" ReturnType="Collection(DB_VACUNACIONModel.GC_LEER_CITAS_MEDICO_Result)">
+      <Parameter Name="FECHAATENCION" Mode="In" Type="DateTime" />
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GC_LEER_HORARIO_SP" ReturnType="Collection(DB_VACUNACIONModel.GC_LEER_HORARIO_SP_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GC_LEER_HORARIOS_POR_MEDICO_SP" ReturnType="Collection(DB_VACUNACIONModel.GC_LEER_HORARIOS_POR_MEDICO_SP_Result)">
+      <Parameter Name="VacunadorID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_existeCita">
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="IdCita" Mode="In" Type="Int32" />
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarCanino">
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Raza" Mode="In" Type="String" />
+      <Parameter Name="Sexo" Mode="In" Type="Boolean" />
+      <Parameter Name="IdPropietario" Mode="In" Type="Int32" />
+      <Parameter Name="Peso" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarCentro">
+      <Parameter Name="IdCentro" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarPropietario">
+      <Parameter Name="IdPropietario" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarUsuario">
+      <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarVacuna">
+      <Parameter Name="IdVacuna" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Laboratorio" Mode="In" Type="String" />
+      <Parameter Name="Lote" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="FechaCaducidad" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_modificarVacunacion">
+      <Parameter Name="IdVacunacion" Mode="In" Type="Int32" />
+      <Parameter Name="IdCentro" Mode="In" Type="Int32" />
+      <Parameter Name="IdVacuna" Mode="In" Type="Int32" />
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="Dosis" Mode="In" Type="Int32" />
+      <Parameter Name="FechaProxima" Mode="In" Type="DateTime" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarVacunador">
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Ocupacion" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarCanino">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Raza" Mode="In" Type="String" />
+      <Parameter Name="IdPropietario" Mode="In" Type="Int32" />
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+      <Parameter Name="Peso" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarCentros">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarCitas">
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="IdPropietario" Mode="In" Type="Int32" />
+      <Parameter Name="IdCentro" Mode="In" Type="Int32" />
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="IdEstado" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="Hota" Mode="In" Type="Time" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarPropietario">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarUsuario">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarVacuna">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Laboratorio" Mode="In" Type="String" />
+      <Parameter Name="Lote" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="FechaCaducidad" Mode="In" Type="DateTime" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_registrarVacunacion">
+      <Parameter Name="IdCentro" Mode="In" Type="Int32" />
+      <Parameter Name="IdVacuna" Mode="In" Type="Int32" />
+      <Parameter Name="IdCanino" Mode="In" Type="Int32" />
+      <Parameter Name="IdVacunador" Mode="In" Type="Int32" />
+      <Parameter Name="Dosis" Mode="In" Type="Int32" />
+      <Parameter Name="FechaProxima" Mode="In" Type="DateTime" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarVacunador">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Contrasena" Mode="In" Type="String" />
+      <Parameter Name="Ocupacion" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GC_BUSCAR_HORARIO_Result">
+    <Property Type="Int32" Name="IdVacunador" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GC_LEER_CITA_SP_Result">
+    <Property Type="Int32" Name="IdCita" Nullable="false" />
+    <Property Type="Int32" Name="IdVacunador" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAtencion" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAATENCIONINICIO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FECHAATENCIONFIN" Nullable="true" Precision="23" />
+    <Property Type="Time" Name="HoraI" Nullable="false" />
+    <Property Type="Time" Name="HoraF" Nullable="false" />
+    <Property Type="String" Name="EstadoCita" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdCanino" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPropietario" Nullable="false" />
+    <Property Type="String" Name="Observacion" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GC_LEER_CITAS_MEDICO_Result">
+    <Property Type="Int32" Name="IdCita" Nullable="false" />
+    <Property Type="Int32" Name="IdVacunador" Nullable="false" />
+    <Property Type="Int32" Name="IdCentro" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAtencion" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAATENCIONINICIO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FECHAATENCIONFIN" Nullable="true" Precision="23" />
+    <Property Type="Time" Name="HoraI" Nullable="false" />
+    <Property Type="Time" Name="HoraF" Nullable="false" />
+    <Property Type="String" Name="EstadoCita" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdPropietario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GC_LEER_HORARIO_SP_Result">
+    <Property Type="Int32" Name="IdHorario" Nullable="false" />
+    <Property Type="Int32" Name="IdVacunador" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAtencion" Nullable="false" Precision="23" />
+    <Property Type="Time" Name="HoraI" Nullable="false" />
+    <Property Type="Time" Name="HoraF" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GC_LEER_HORARIOS_POR_MEDICO_SP_Result">
+    <Property Type="Int32" Name="IdHorario" Nullable="false" />
+    <Property Type="Int32" Name="IdVacunador" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAtencion" Nullable="false" Precision="23" />
+    <Property Type="Time" Name="HoraI" Nullable="false" />
+    <Property Type="Time" Name="HoraF" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+</Schema>

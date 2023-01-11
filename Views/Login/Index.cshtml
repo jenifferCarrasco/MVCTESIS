@@ -1,0 +1,81 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    <style>
+    </style>
+</head>
+<body class="bg-gradient-primary">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="@Url.Content("https://www.google.com/url?sa=i&url=https%3A%2F%2Fimagendeperros.tumblr.com%2Fpost%2F153644201096%2Fimagenes-de-perros-tiernos-navide%25C3%25B1os-para-facebook&psig=AOvVaw3kAiMvO4YYJmotWjbJBExj&ust=1673380033495000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCNDJvfKgu_wCFQAAAAAdAAAAABAD")" style="width: 500px;height: 500px;" />
+                            </div>
+                            <div class="col-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Bienvenidos DogApp!</h1>
+                                    </div>
+                                    <form class="user" action="@Url.Action("Index","Login")" method="post">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" name="correo" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" name="contrasena" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            @{if (ViewBag.Error != null)
+                                                {
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                        <button class="btn btn-primary btn-block btn-user" type="submit">Ingresar</button>
+
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="~/Views/Login/Password.cshtml">Olvidaste la contraseña?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="~/Views/Login/Register.cshtml">Crear una cuenta!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+</html>
+

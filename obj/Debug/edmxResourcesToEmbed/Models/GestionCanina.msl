@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_VACUNACIONModelStoreContainer" CdmEntityContainer="DB_VACUNACIONEntities">
+    <EntitySetMapping Name="Canino">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Canino">
+        <MappingFragment StoreEntitySet="Canino">
+          <ScalarProperty Name="IdCanino" ColumnName="IdCanino" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Raza" ColumnName="Raza" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Centros">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Centros">
+        <MappingFragment StoreEntitySet="Centros">
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Citas">
+        <MappingFragment StoreEntitySet="Citas">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="IdCanino" ColumnName="IdCanino" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hota" ColumnName="Hota" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CitaVacunacion">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.CitaVacunacion">
+        <MappingFragment StoreEntitySet="CitaVacunacion">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="IdCanino" ColumnName="IdCanino" />
+          <ScalarProperty Name="EstadoCita" ColumnName="EstadoCita" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="FechaAtencionI" ColumnName="FechaAtencionI" />
+          <ScalarProperty Name="FechaAtencionF" ColumnName="FechaAtencionF" />
+          <ScalarProperty Name="HoraI" ColumnName="HoraI" />
+          <ScalarProperty Name="HoraF" ColumnName="HoraF" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoCitas">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.EstadoCitas">
+        <MappingFragment StoreEntitySet="EstadoCitas">
+          <ScalarProperty Name="IdEstadoCita" ColumnName="IdEstadoCita" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="HoraI" ColumnName="HoraI" />
+          <ScalarProperty Name="HoraF" ColumnName="HoraF" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropietarioCanino">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.PropietarioCanino">
+        <MappingFragment StoreEntitySet="PropietarioCanino">
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacunaciones">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Vacunaciones">
+        <MappingFragment StoreEntitySet="Vacunaciones">
+          <ScalarProperty Name="IdVacunacion" ColumnName="IdVacunacion" />
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="IdVacuna" ColumnName="IdVacuna" />
+          <ScalarProperty Name="IdCanino" ColumnName="IdCanino" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+          <ScalarProperty Name="FechaProxima" ColumnName="FechaProxima" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacunadores">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Vacunadores">
+        <MappingFragment StoreEntitySet="Vacunadores">
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacunas">
+      <EntityTypeMapping TypeName="DB_VACUNACIONModel.Vacunas">
+        <MappingFragment StoreEntitySet="Vacunas">
+          <ScalarProperty Name="IdVacuna" ColumnName="IdVacuna" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GC_BUSCAR_HORARIO" FunctionName="DB_VACUNACIONModel.Store.GC_BUSCAR_HORARIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_VACUNACIONModel.GC_BUSCAR_HORARIO_Result">
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GC_EDITAR_CITA_SP" FunctionName="DB_VACUNACIONModel.Store.GC_EDITAR_CITA_SP" />
+    <FunctionImportMapping FunctionImportName="GC_INSERTAR_CITA_SP" FunctionName="DB_VACUNACIONModel.Store.GC_INSERTAR_CITA_SP" />
+    <FunctionImportMapping FunctionImportName="GC_LEER_CITA_SP" FunctionName="DB_VACUNACIONModel.Store.GC_LEER_CITA_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_VACUNACIONModel.GC_LEER_CITA_SP_Result">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="FECHAATENCIONINICIO" ColumnName="FECHAATENCIONINICIO" />
+          <ScalarProperty Name="FECHAATENCIONFIN" ColumnName="FECHAATENCIONFIN" />
+          <ScalarProperty Name="HoraI" ColumnName="HoraI" />
+          <ScalarProperty Name="HoraF" ColumnName="HoraF" />
+          <ScalarProperty Name="EstadoCita" ColumnName="EstadoCita" />
+          <ScalarProperty Name="IdCanino" ColumnName="IdCanino" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GC_LEER_CITAS_MEDICO" FunctionName="DB_VACUNACIONModel.Store.GC_LEER_CITAS_MEDICO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_VACUNACIONModel.GC_LEER_CITAS_MEDICO_Result">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdVacunador" ColumnName="IdVacunador" />
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="FECHAATENCIONINICIO" ColumnName="FECHAATENCIONINICIO" />
+          <ScalarProperty Name="FECHAATENCIONFIN" ColumnName="FECHAATENCIONFIN" />
+          <ScalarProperty Name="HoraI" ColumnName="HoraI" />
+          <ScalarProperty Name="HoraF" ColumnName="HoraF" />
+          <ScalarProperty Name="EstadoCita" ColumnName="EstadoCita" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_existeCita" FunctionName="DB_VACUNACIONModel.Store.sp_existeCita" />
+    <FunctionImportMapping FunctionImportName="sp_INSERTAR_CITA" FunctionName="DB_VACUNACIONModel.Store.sp_INSERTAR_CITA" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarCanino" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarCanino" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarCentro" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarCentro" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarPropietario" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarPropietario" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarUsuario" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarVacuna" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarVacuna" />
+    <FunctionImportMapping FunctionImportName="sp_modificarVacunacion" FunctionName="DB_VACUNACIONModel.Store.sp_modificarVacunacion" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarVacunador" FunctionName="DB_VACUNACIONModel.Store.sp_ModificarVacunador" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarCanino" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarCanino" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarCentros" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarCentros" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarCitas" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarCitas" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarPropietario" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarPropietario" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarUsuario" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarVacuna" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarVacuna" />
+    <FunctionImportMapping FunctionImportName="sp_registrarVacunacion" FunctionName="DB_VACUNACIONModel.Store.sp_registrarVacunacion" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarVacunador" FunctionName="DB_VACUNACIONModel.Store.sp_RegistrarVacunador" />
+  </EntityContainerMapping>
+</Mapping>
