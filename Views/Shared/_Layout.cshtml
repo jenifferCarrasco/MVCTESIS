@@ -55,7 +55,14 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("Registrar", "Cita")">Registrar</a>
+                        @if(objeto.Roles.IdRol == 1){
                         <a class="collapse-item" href="@Url.Action("Consultar", "Cita")">Consultar</a>
+                        }
+                        @if(objeto.Roles.IdRol != 1)
+            {
+
+                    <a class="collapse-item" href="@Url.Action("ConsultarCitas", "Cita")">Consultar</a>
+            } 
                     </div>
                 </div>
             </li>
@@ -71,7 +78,6 @@
                              data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Registro:</h6>
-                                <a class="collapse-item" href="@Url.Action("Caninos", "GestionVacunacion")">Caninos</a>
                                 @{
                                     if (objeto.Roles.IdRol == 1)
                                     {
@@ -80,7 +86,9 @@
                                         <a class="collapse-item" href="@Url.Action("Vacunadores", "GestionVacunacion")">Vacunadores</a>
                                     }
                                 }
+                                <a class="collapse-item" href="@Url.Action("Caninos", "GestionVacunacion")">Caninos</a>
                                 <a class="collapse-item" href="@Url.Action("Vacunaciones", "GestionVacunacion")">Vacunaciones</a>
+                                
 
                             </div>
                         </div>
@@ -100,9 +108,9 @@
                             if (objeto.Roles.IdRol == 1)
                             {
                                 <a class="collapse-item" href="@Url.Action("Usuario", "Usuarios")">Usuarios</a>
+                        <a class="collapse-item" href="@Url.Action("Propietario","Usuarios")">Propietarios</a>
                             }
                         }
-                        <a class="collapse-item" href="@Url.Action("Propietario","Usuarios")">Propietarios</a>
                     </div>
                 </div>
             </li>
@@ -180,6 +188,8 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar Todas</a>
                             </div>
                         </li>
+
+                        
 
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->

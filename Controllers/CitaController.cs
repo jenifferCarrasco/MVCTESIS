@@ -21,6 +21,12 @@ namespace ProyectoGestionCanina_APIandMVC.Controllers
             return View();
         }
 
+        public ActionResult ConsultarCitas()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public JsonResult GuardarCitas(Citas objeto)
         {
@@ -59,6 +65,18 @@ namespace ProyectoGestionCanina_APIandMVC.Controllers
             oLista = CitasLogica.Instancia.Listar(idestadocita, idcanino, idvacunador);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+
+        [HttpGet]
+        public JsonResult ListarCitasPorPropietarios(int idpropietario)
+        {
+            List<Citas> oLista = new List<Citas>();
+            oLista = CitasLogica.Instancia.ListarCitasPorPropietarios(idpropietario);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
 
         [HttpPost]
         public JsonResult Devolver(int idcita)

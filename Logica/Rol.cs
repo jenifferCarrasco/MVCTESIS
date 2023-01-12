@@ -33,6 +33,8 @@ namespace ProyectoGestionCanina_APIandMVC.Logica
         public List<Roles> Listar()
         {
             List<Roles> Lista = new List<Roles>();
+
+           
             using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
             {
                 try

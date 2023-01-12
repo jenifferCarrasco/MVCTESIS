@@ -175,6 +175,58 @@ namespace ProyectoGestionCanina_APIandMVC.Logica
             return Lista;
         }
 
+
+
+        public List<Citas> ListarCitasPorPropietarios(int idPropietario)
+        {
+            List<Citas> Lista = new List<Citas>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
+            {
+                try
+                {
+
+          
+                    StringBuilder query = new StringBuilder();
+
+                    query.AppendLine("set dateformat dmy");
+                    query.AppendLine("select p.IdCita,ec.IdEstadoCita,ec.Descripcion,c.Nombre[NombreC],v.Nombre[NombreV],v.Apellido[ApellidoV],pc.Nombre[NombreP],pc.Apellido[ApellidoP],convert(char(10),p.Fecha,103)[Fecha],p.Hota from Citas p");
+                    query.AppendLine("inner join EstadoCitas ec on ec.IdEstadoCita = p.IdEstadoCita");
+                    query.AppendLine("inner join Canino c on c.IdCanino = p.IdCanino");
+                    query.AppendLine("inner join Vacunador v on v.IdVacunador = p.IdVacunador");
+                    query.AppendLine("where c.idPropietario = p.iDpropietario");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.Parameters.AddWithValue("@idPropietario", idPropietario);
+                 
+                    cmd.CommandType = CommandType.Text;
+
+                    oConexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Lista.Add(new Citas()
+                            {
+                                IdCita = Convert.ToInt32(dr["IdCita"]),
+                                EstadoCitas = new EstadoCitas() { IdEstadoCita = Convert.ToInt32(dr["IdEstadoCita"]), Descripcion = dr["Descripcion"].ToString() },
+                                Canino = new Canino() { IdCanino = Convert.ToInt32(dr["IdCanino"]), Nombre = dr["NombreC"].ToString() },
+                                PropietarioCanino = new PropietarioCanino() { IdPropietario = Convert.ToInt32(dr["IdPropietario"]), Nombre = dr["NombreP"].ToString(), Apellido = dr["ApellidoP"].ToString() },
+                                Vacunadores = new Vacunadores() { IdVacunador = Convert.ToInt32(dr["IdVacunador"]), Nombre = dr["NombreV"].ToString(), Apellido = dr["ApellidoV"].ToString() },
+                                Fecha = Convert.ToDateTime(dr["Fecha"]),
+                                Hota = (TimeSpan)dr["Hota"],
+                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]),
+                            });
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Lista = new List<Citas>();
+                }
+            }
+            return Lista;
+        }
         public bool Devolver(int idcita)
         {
             bool respuesta = true;
